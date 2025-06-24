@@ -2,16 +2,17 @@
 
 workflow {
     references = Channel.fromPath(params.references)
-    Channel.fromPath("${params.bamdir}/*.bam")
-    | collect
-    | combine(references)
-    | view
+    bams = Channel.fromPath("${params.bamdir}/*.bam").collect().toList()
+
+    references
+    | combine(bams)
+    | Align
 }
 
 process Align {
     container 'public.ecr.aws/o5l3p3e4/scalerna:2025-04-11-191914'
 
-    input: tuple path(bams), path(ref)
+    input: tuple path(ref), path(bams)
     output: path("Solo.out")
 
     script:
