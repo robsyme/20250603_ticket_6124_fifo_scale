@@ -17,7 +17,7 @@ process Align {
 
     script:
     """
-    STAR \
+    STAR \\
         --runThreadN ${task.cpus}  \\
         --genomeDir ${ref} \\
         --soloType CB_UMI_Simple \\
