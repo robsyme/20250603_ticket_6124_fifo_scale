@@ -10,7 +10,7 @@ workflow {
 }
 
 process Align {
-    container 'public.ecr.aws/o5l3p3e4/scalerna:2025-04-11-191914'
+    container 'robsyme/star:2025-04-11-191914'
 
     input: tuple path(ref), path(bams)
     output: path("Solo.out")
