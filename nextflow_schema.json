@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com///nextflow_schema.json",
+    "title": " pipeline parameters",
+    "description": "",
+    "type": "object",
+    "$defs": {
+        "basic_io": {
+            "title": "Basic IO",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "bamdir": {
+                    "type": "string",
+                    "default": "s3://scidev-playground-permanent/uploads/20250606-ticket-6124-fusion-star/workdir",
+                    "description": "Parent directory containing bam files"
+                },
+                "reference": {
+                    "type": "string",
+                    "default": "s3://scidev-playground-permanent/uploads/20250606-ticket-6124-fusion-star/references",
+                    "description": "STAR reference directory"
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/$defs/basic_io"
+        }
+    ]
+}
