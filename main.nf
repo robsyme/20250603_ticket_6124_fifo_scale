@@ -18,7 +18,7 @@ process Align {
     script:
     """
     STAR \\
-        --runThreadN ${task.cpus}  \\
+        --runThreadN ${task.cpus} \\
         --genomeDir ${ref} \\
         --soloType CB_UMI_Simple \\
         --soloBarcodeReadLength 0 \\
@@ -38,8 +38,10 @@ process Align {
         --soloInputSAMattrBarcodeSeq CB UM \\
         --soloCellFilter None \\
         --outFilterMultimapNmax 6
+    echo "Alignment complete"
     pigz -p ${task.cpus} Solo.out/GeneFull_Ex50pAS/raw/UniqueAndMult-PropUnique.mtx
     pigz -p ${task.cpus} Solo.out/GeneFull_Ex50pAS/raw/barcodes.tsv
     pigz -p ${task.cpus} Solo.out/GeneFull_Ex50pAS/raw/features.tsv
+    echo "Compression complete, task complete"
     """
 }
