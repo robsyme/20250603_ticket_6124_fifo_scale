@@ -1,7 +1,7 @@
 
 
 workflow {
-    references = Channel.fromPath(params.references)
+    references = Channel.fromPath(params.reference)
     bams = Channel.fromPath("${params.bamdir}/*.bam").collect().toList()
 
     references
